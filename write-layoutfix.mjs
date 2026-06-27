@@ -1,4 +1,7 @@
-import type { Metadata } from "next"
+import { writeFileSync } from 'fs'
+import { join } from 'path'
+
+const layout = `import type { Metadata } from "next"
 import "./globals.css"
 import Navbar from "@/components/shared/Navbar"
 import Footer from "@/components/shared/Footer"
@@ -42,4 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   )
-}
+}`
+
+writeFileSync(join(process.cwd(), 'app', 'layout.tsx'), layout)
+console.log('Layout fixed!')
